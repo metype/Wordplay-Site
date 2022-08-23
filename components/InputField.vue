@@ -23,7 +23,7 @@
         },
         methods: {
             submitWord() {
-                axios.get(`${state.apiURL}/submit/${state.ID}/${state.gameID}/${this.text}`).then(function (response) {
+                axios.get(`${state.apiURL}/submit/?id=${state.ID}&game_id=${state.gameID}&word=${this.text}`).then(function (response) {
                     if (response.status == 201) {
                         state.notifications.push({
                             life: 300,

@@ -45,12 +45,12 @@ export default {
                     text: "Starting New Game",
                 })
                 localStorage.setItem("games", ""+(parseInt(localStorage.getItem("games")) + 1));
-                axios.get(`${state.apiURL}/join/${state.ID}`).then(function (response) {
+                axios.get(`${state.apiURL}/join/?id=${state.ID}`).then(function (response) {
                     state.gameID = response.data.id;
                 });
             }
             if(state.gameID != '' && state.gameID != ' ')
-                axios.get(`${state.apiURL}/board/${state.ID}/${state.gameID}`).then(function (response) {
+                axios.get(`${state.apiURL}/board/?id=${state.ID}&game_id=${state.gameID}`).then(function (response) {
                 state.boardState = response.data.board_state;
                 if (response.status == 201) {
                     state.turn = -2;

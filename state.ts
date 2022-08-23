@@ -25,7 +25,7 @@ let stateObj: State = {
     notifications: [],
     showPopup: true,
     popupType: "help",
-    apiURL: "http://localhost:4000",
+    apiURL: "https://api.wordplay.site",
     winner: -1,
 }
 
