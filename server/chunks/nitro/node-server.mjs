@@ -330,79 +330,79 @@ const assets = {
   "/android-chrome-192x192.png": {
     "type": "image/png",
     "etag": "\"266d-tzgLWD4uaZUGYa2C+Vc0fXBO8Ck\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.237Z",
     "path": "../public/android-chrome-192x192.png"
   },
   "/android-chrome-256x256.png": {
     "type": "image/png",
     "etag": "\"1cf7-AJFQnvTi3q3nSE358RfdpURthLY\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.237Z",
     "path": "../public/android-chrome-256x256.png"
   },
   "/apple-touch-icon.png": {
     "type": "image/png",
     "etag": "\"1a97-7TXPGfKoYxRODroejo6qVcvw8DQ\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.237Z",
     "path": "../public/apple-touch-icon.png"
   },
   "/browserconfig.xml": {
     "type": "application/xml",
     "etag": "\"f6-l0rqGL2lqVgCwGuAEmqx2W2R1wg\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.237Z",
     "path": "../public/browserconfig.xml"
   },
   "/favicon-16x16.png": {
     "type": "image/png",
     "etag": "\"602-g2EzJaQiIB/RG4B3CF6B9b8Y30c\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.237Z",
     "path": "../public/favicon-16x16.png"
   },
   "/favicon-32x32.png": {
     "type": "image/png",
     "etag": "\"8b9-hF4iP75hjaApSy+Z7ctlC38n0BM\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/favicon-32x32.png"
   },
   "/favicon.ico": {
     "type": "image/vnd.microsoft.icon",
     "etag": "\"3aee-+7cd9VHIj5yrOjoAfT4Lxw+KIbg\"",
-    "mtime": "2022-08-24T16:06:14.808Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/favicon.ico"
   },
   "/mstile-150x150.png": {
     "type": "image/png",
     "etag": "\"1737-jdbiyjcCqosajNBn0+FGeLE3dAY\"",
-    "mtime": "2022-08-24T16:06:14.804Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/mstile-150x150.png"
   },
   "/safari-pinned-tab.svg": {
     "type": "image/svg+xml",
     "etag": "\"731-/MZ1h18HTIwJATaaQ+eIGnce7UE\"",
-    "mtime": "2022-08-24T16:06:14.804Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/safari-pinned-tab.svg"
   },
   "/site.webmanifest": {
     "type": "application/manifest+json",
     "etag": "\"1aa-gQgM+NcI4ur00/2GgzHCrq0e7W0\"",
-    "mtime": "2022-08-24T16:06:14.804Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/site.webmanifest"
   },
   "/_nuxt/entry-3721c28f.mjs": {
     "type": "application/javascript",
     "etag": "\"1e6eb-q6FJlBkdLl1Xkx8pNN8msjFi0mM\"",
-    "mtime": "2022-08-24T16:06:14.804Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/_nuxt/entry-3721c28f.mjs"
   },
   "/_nuxt/entry.d97e324a.css": {
     "type": "text/css; charset=utf-8",
     "etag": "\"3644-7V1xvAiW7wnHZ+QIR4u/+p5wuT8\"",
-    "mtime": "2022-08-24T16:06:14.804Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/_nuxt/entry.d97e324a.css"
   },
   "/_nuxt/manifest.json": {
     "type": "application/json",
     "etag": "\"cb-u01WJvjPE9eXOaXF8ZgOrfgTIAk\"",
-    "mtime": "2022-08-24T16:06:14.804Z",
+    "mtime": "2022-08-24T16:17:38.233Z",
     "path": "../public/_nuxt/manifest.json"
   }
 };
