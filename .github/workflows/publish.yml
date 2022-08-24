@@ -19,6 +19,9 @@ jobs:
 
       - name: Build
         run: npm run build # The build command of your project
+
+      - name : Copy Dockerfile to build
+        run: cp Dockerfile .output/Dockerfile
     
       - name: Push
         uses: s0/git-publish-subdir-action@develop
