@@ -4027,7 +4027,50 @@ let stateObj = {
   winner: -1
 };
 const state = vue_cjs_prod.reactive(stateObj);
+state.boardState;
 const _sfc_main$6 = {
+  data() {
+    return {
+      text: "",
+      turn: 1
+    };
+  },
+  methods: {
+    submitWord() {
+      axios.get(`${state.apiURL}/submit/?id=${state.ID}&game_id=${state.gameID}&word=${this.text}`).then(function(response) {
+        if (response.status == 201) {
+          state.notifications.push({
+            life: 300,
+            text: response.data.game_status
+          });
+        }
+      });
+      this.text = "";
+    },
+    forceInputUppercase(e) {
+      var start = e.target.selectionStart;
+      var end = e.target.selectionEnd;
+      e.target.value = e.target.value.toUpperCase().replaceAll(/[^A-Z]/g, "");
+      e.target.setSelectionRange(start, end);
+    }
+  },
+  mounted() {
+    setInterval(() => {
+      this.turn = state.turn;
+    }, 100);
+  }
+};
+function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+  _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "relative h-center input" }, _attrs))} data-v-28c47782><input id="textInput"${serverRenderer.exports.ssrRenderAttr("value", $data.text)} type="text" placeholder="Enter Word..."${serverRenderer.exports.ssrIncludeBooleanAttr($data.turn == 0) ? " disabled" : ""}${serverRenderer.exports.ssrRenderAttr("title", $data.turn == 0 ? "Wait For Other Player..." : "Enter Word")} data-v-28c47782><button data-v-28c47782><svg style="${serverRenderer.exports.ssrRenderStyle({ "width": "32px", "height": "32px" })}" viewBox="0 0 24 24" data-v-28c47782><path fill="currentColor" d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6A2,2 0 0,0 4,6V9H6V6H18V18H6V15H4V18A2,2 0 0,0 6,20H18A2,2 0 0,0 20,18Z" data-v-28c47782></path></svg></button></div>`);
+}
+const _sfc_setup$6 = _sfc_main$6.setup;
+_sfc_main$6.setup = (props, ctx) => {
+  const ssrContext = vue_cjs_prod.useSSRContext();
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/InputField.vue");
+  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+};
+const __nuxt_component_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-28c47782"]]);
+const _sfc_main$5 = {
   data() {
     return {
       state
@@ -4065,25 +4108,19 @@ const _sfc_main$6 = {
     }
   }
 };
-function _sfc_ssrRender$2(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
+function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
   _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({
-    class: `absolute turn-field h-center ${$options.bubbleColour}`,
+    class: `relative turn-field h-center ${$options.bubbleColour}`,
     style: `cursor:${$options.clickable ? "pointer" : "default"}`
-  }, _attrs))} data-v-d864ea96>`);
-  if (!$options.clickable) {
-    _push(`<div data-v-d864ea96><h3 class="h-center absolute text" data-v-d864ea96>${serverRenderer.exports.ssrInterpolate($options.currentTurn)}</h3></div>`);
-  } else {
-    _push(`<div data-v-d864ea96><h3 class="h-center absolute text" data-v-d864ea96>${serverRenderer.exports.ssrInterpolate($options.currentTurn)}</h3></div>`);
-  }
-  _push(`</div>`);
+  }, _attrs))} data-v-8512945a><h3 class="h-center absolute text" data-v-8512945a>${serverRenderer.exports.ssrInterpolate($options.currentTurn)}</h3></div>`);
 }
-const _sfc_setup$6 = _sfc_main$6.setup;
-_sfc_main$6.setup = (props, ctx) => {
+const _sfc_setup$5 = _sfc_main$5.setup;
+_sfc_main$5.setup = (props, ctx) => {
   const ssrContext = vue_cjs_prod.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/TurnField.vue");
-  return _sfc_setup$6 ? _sfc_setup$6(props, ctx) : void 0;
+  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
 };
-const __nuxt_component_1 = /* @__PURE__ */ _export_sfc(_sfc_main$6, [["ssrRender", _sfc_ssrRender$2], ["__scopeId", "data-v-d864ea96"]]);
+const __nuxt_component_2 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-8512945a"]]);
 const __default__$2 = {
   props: {
     index: Number
@@ -4100,28 +4137,28 @@ const __default__$2 = {
     }, 100);
   }
 };
-const _sfc_main$5 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
+const _sfc_main$4 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   ...__default__$2,
   __name: "Letter",
   __ssrInlineRender: true,
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
       _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({
-        class: `letter ${_ctx.val}`,
+        class: `relative h-center letter ${_ctx.val}`,
         id: "letter"
-      }, _attrs))} data-v-ed3422c2><h3 class="absolute hv-center text" data-v-ed3422c2>`);
+      }, _attrs))} data-v-604c2685><h3 class="text" data-v-604c2685>`);
       serverRenderer.exports.ssrRenderSlot(_ctx.$slots, "default", {}, null, _push, _parent);
       _push(`</h3></div>`);
     };
   }
 });
-const _sfc_setup$5 = _sfc_main$5.setup;
-_sfc_main$5.setup = (props, ctx) => {
+const _sfc_setup$4 = _sfc_main$4.setup;
+_sfc_main$4.setup = (props, ctx) => {
   const ssrContext = vue_cjs_prod.useSSRContext();
   (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/Letter.vue");
-  return _sfc_setup$5 ? _sfc_setup$5(props, ctx) : void 0;
+  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
 };
-const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$5, [["__scopeId", "data-v-ed3422c2"]]);
+const __nuxt_component_0 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-604c2685"]]);
 const __default__$1 = {
   data() {
     return {
@@ -4188,7 +4225,7 @@ const __default__$1 = {
     }, 10);
   }
 };
-const _sfc_main$4 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
+const _sfc_main$3 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   ...__default__$1,
   __name: "WordplayBoard",
   __ssrInlineRender: true,
@@ -4196,11 +4233,11 @@ const _sfc_main$4 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
     state.boardState;
     return (_ctx, _push, _parent, _attrs) => {
       const _component_Letter = __nuxt_component_0;
-      _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "absolute hv-center board" }, _attrs))} data-v-5e7420a4><!--[-->`);
+      _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "absolute hv-center board" }, _attrs))} data-v-c8d5073a><!--[-->`);
       serverRenderer.exports.ssrRenderList(_ctx.alphabet, (group, i) => {
-        _push(`<div class="letter-group" data-v-5e7420a4>`);
+        _push(`<div class="letter-group" data-v-c8d5073a>`);
         if (i == 3) {
-          _push(`<div data-v-5e7420a4></div>`);
+          _push(`<div data-v-c8d5073a></div>`);
         } else {
           _push(`<!---->`);
         }
@@ -4227,56 +4264,13 @@ const _sfc_main$4 = /* @__PURE__ */ vue_cjs_prod.defineComponent({
     };
   }
 });
-const _sfc_setup$4 = _sfc_main$4.setup;
-_sfc_main$4.setup = (props, ctx) => {
-  const ssrContext = vue_cjs_prod.useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/WordplayBoard.vue");
-  return _sfc_setup$4 ? _sfc_setup$4(props, ctx) : void 0;
-};
-const __nuxt_component_2 = /* @__PURE__ */ _export_sfc(_sfc_main$4, [["__scopeId", "data-v-5e7420a4"]]);
-state.boardState;
-const _sfc_main$3 = {
-  data() {
-    return {
-      text: "",
-      turn: 1
-    };
-  },
-  methods: {
-    submitWord() {
-      axios.get(`${state.apiURL}/submit/?id=${state.ID}&game_id=${state.gameID}&word=${this.text}`).then(function(response) {
-        if (response.status == 201) {
-          state.notifications.push({
-            life: 300,
-            text: response.data.game_status
-          });
-        }
-      });
-      this.text = "";
-    },
-    forceInputUppercase(e) {
-      var start = e.target.selectionStart;
-      var end = e.target.selectionEnd;
-      e.target.value = e.target.value.toUpperCase().replaceAll(/[^A-Z]/g, "");
-      e.target.setSelectionRange(start, end);
-    }
-  },
-  mounted() {
-    setInterval(() => {
-      this.turn = state.turn;
-    }, 100);
-  }
-};
-function _sfc_ssrRender$1(_ctx, _push, _parent, _attrs, $props, $setup, $data, $options) {
-  _push(`<div${serverRenderer.exports.ssrRenderAttrs(vue_cjs_prod.mergeProps({ class: "absolute hv-center input" }, _attrs))} data-v-7bf54623><input id="textInput"${serverRenderer.exports.ssrRenderAttr("value", $data.text)} type="text" placeholder="Enter Word..."${serverRenderer.exports.ssrIncludeBooleanAttr($data.turn == 0) ? " disabled" : ""}${serverRenderer.exports.ssrRenderAttr("title", $data.turn == 0 ? "Wait For Other Player..." : "Enter Word")} data-v-7bf54623><button data-v-7bf54623><svg style="${serverRenderer.exports.ssrRenderStyle({ "width": "32px", "height": "32px" })}" viewBox="0 0 24 24" data-v-7bf54623><path fill="currentColor" d="M14,12L10,8V11H2V13H10V16M20,18V6C20,4.89 19.1,4 18,4H6A2,2 0 0,0 4,6V9H6V6H18V18H6V15H4V18A2,2 0 0,0 6,20H18A2,2 0 0,0 20,18Z" data-v-7bf54623></path></svg></button></div>`);
-}
 const _sfc_setup$3 = _sfc_main$3.setup;
 _sfc_main$3.setup = (props, ctx) => {
   const ssrContext = vue_cjs_prod.useSSRContext();
-  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/InputField.vue");
+  (ssrContext.modules || (ssrContext.modules = /* @__PURE__ */ new Set())).add("components/WordplayBoard.vue");
   return _sfc_setup$3 ? _sfc_setup$3(props, ctx) : void 0;
 };
-const __nuxt_component_3 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["ssrRender", _sfc_ssrRender$1], ["__scopeId", "data-v-7bf54623"]]);
+const __nuxt_component_3 = /* @__PURE__ */ _export_sfc(_sfc_main$3, [["__scopeId", "data-v-c8d5073a"]]);
 const _sfc_main$2 = {
   data() {
     return {
@@ -4364,16 +4358,18 @@ const _sfc_main = /* @__PURE__ */ vue_cjs_prod.defineComponent({
   setup(__props) {
     return (_ctx, _push, _parent, _attrs) => {
       const _component_ControlButtons = _sfc_main$7;
-      const _component_TurnField = __nuxt_component_1;
-      const _component_WordplayBoard = __nuxt_component_2;
-      const _component_InputField = __nuxt_component_3;
+      const _component_InputField = __nuxt_component_1;
+      const _component_TurnField = __nuxt_component_2;
+      const _component_WordplayBoard = __nuxt_component_3;
       const _component_Popup = __nuxt_component_4;
       const _component_Notification = __nuxt_component_5;
       _push(`<!--[--><link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"><link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"><link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"><link rel="manifest" href="/site.webmanifest"><link rel="mask-icon" href="/safari-pinned-tab.svg" color="#5bbad5"><meta name="msapplication-TileColor" content="#da532c"><meta name="theme-color" content="#ffffff"><title>Wordplay</title><h1 class="absolute h-center title">WordPlay</h1>`);
       _push(serverRenderer.exports.ssrRenderComponent(_component_ControlButtons, { class: "control-buttons" }, null, _parent));
-      _push(serverRenderer.exports.ssrRenderComponent(_component_TurnField, null, null, _parent));
-      _push(serverRenderer.exports.ssrRenderComponent(_component_WordplayBoard, null, null, _parent));
+      _push(`<div class="absolute h-center input-area">`);
       _push(serverRenderer.exports.ssrRenderComponent(_component_InputField, null, null, _parent));
+      _push(serverRenderer.exports.ssrRenderComponent(_component_TurnField, null, null, _parent));
+      _push(`</div>`);
+      _push(serverRenderer.exports.ssrRenderComponent(_component_WordplayBoard, null, null, _parent));
       _push(serverRenderer.exports.ssrRenderComponent(_component_Popup, null, null, _parent));
       _push(`<!--[-->`);
       serverRenderer.exports.ssrRenderList(vue_cjs_prod.unref(state).notifications, (notification, i) => {
