@@ -1,5 +1,5 @@
 <template>
-    <div class="absolute hv-center input">
+    <div class="relative h-center input">
         <input id="textInput" v-model="text" type="text" placeholder="Enter Word..." v-on:keyup.enter="submitWord" v-on:keyup="forceInputUppercase" :disabled="turn == 0" :title="(turn == 0)?'Wait For Other Player...':'Enter Word'"/>
         <button @click="submitWord()">
             <svg style="width:32px;height:32px" viewBox="0 0 24 24">
@@ -51,8 +51,6 @@
 
 <style scoped>
 .input {
-    top:auto;
-    bottom:2rem;
     width: max(25%,15rem);
     margin-right:75px;
 }

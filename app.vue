@@ -13,15 +13,25 @@
   <title>Wordplay</title>
   <h1 class="absolute h-center title">WordPlay</h1>
   <ControlButtons class="control-buttons"/>
-  <TurnField/>
+  <div class = "absolute h-center input-area">
+    <InputField/>
+    <TurnField/>
+  </div>
   <WordplayBoard/>
-  <InputField/>
   <Popup/>
   <Notification v-for="(notification, i) in state.notifications" :index="i"/>
 </template>
 
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Lato:wght@700&family=Outfit&display=swap');
+
+  .relative {
+    position: relative;
+  }
+
+  .input-area {
+    bottom:1rem;
+  }
 
   .title {
     top:-1rem;

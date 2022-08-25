@@ -3,9 +3,11 @@
 </script>
 
 <template>
-    <div :class="`letter ${val}`" id="letter">
-        <h3 class="absolute hv-center text"><slot /></h3>
-    </div>
+        <div :class="`relative h-center letter ${val}`" id="letter">
+            <h3 class="text">
+                <slot />
+            </h3>
+        </div>
 </template>
 
 <script lang="ts">
@@ -31,9 +33,14 @@ export default {
 .letter {
     position: relative;
     /* padding: 100% 0; */
-    height:300%;
     top:25%;
-    transition: all 1000ms;
+    height:calc(calc(100vh - 15rem) / 4);
+    transition: background-color 1000ms;
+}
+
+text {
+    top:0px;
+    transform: translateY(-100%);
 }
 
 h3.text {
@@ -54,9 +61,10 @@ h3.text {
     background-color: #555;
 }
 
-.text {
-    top:15%;
-    font-size:xx-large;
+.letter {
+    /* font-size:xx-large; */
+    font-size: calc(calc(100vh - 15rem) / 15);
+    text-align:center;
 }
 
 div.for-player.letter {

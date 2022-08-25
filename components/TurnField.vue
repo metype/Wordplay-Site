@@ -1,11 +1,6 @@
 <template>
-    <div :class="`absolute turn-field h-center ${bubbleColour}`"  :style="`cursor:${clickable?'pointer':'default'}`" @click="if (clickable) { state.showPopup = true; state.popupType = 'next-game' };">
-        <div v-if="!clickable">
-            <h3 class="h-center absolute text">{{currentTurn}}</h3>
-        </div>
-        <div v-else>
-            <h3 class="h-center absolute text">{{currentTurn}}</h3>
-        </div>
+    <div :class="`relative turn-field h-center ${bubbleColour}`"  :style="`cursor:${clickable?'pointer':'default'}`" @click="if (clickable) { state.showPopup = true; state.popupType = 'next-game' };">
+        <h3 class="h-center absolute text">{{currentTurn}}</h3>
     </div>
 </template>
 
@@ -54,7 +49,7 @@ export default {
 <style scoped>
 div.turn-field {
     border: 1px solid #555;
-    top: calc(20vh + max(50vh,413px));
+
     transition: all 1000ms;
     height:3rem;
     width:15rem;

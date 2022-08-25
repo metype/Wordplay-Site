@@ -98,20 +98,20 @@ export default {
 
 .board {
     width: min(75vw,50rem);
-    height: max(50vh,413px);
-    padding: 0 .5rem;
-    top: 40vh;
+    height: calc(100vh - 14rem);
+    padding: 0rem .5rem .5rem .5rem;
+    top:45%;
 }
 
-@media (max-height: 840px){
+/* @media (max-height: 840px){
     .board {
         top:275px;
     }
-}
+} */
 
 .letter-group {
     width: 100%;
-    height: 25%;
+    height: calc(calc(100vh - 14rem) / 4);
     display: grid;
     grid-auto-rows: 2rem;
     column-gap: 1%;
